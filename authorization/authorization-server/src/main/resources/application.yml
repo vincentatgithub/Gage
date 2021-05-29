@@ -1,0 +1,40 @@
+spring:
+  jpa:
+    show-sql: true
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://sh-cdb-efc29x62.sql.tencentcdb.com:60072/gage_user
+    username: root
+    password: miroot@2021
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    mongodb:
+      host: 101.37.150.76
+      port: 27017
+      username: admin
+      password: miroot@2021
+      database: gage_user
+  redis:
+    host: r-bp1fe243564f9674pd.redis.rds.aliyuncs.com
+    port: 6379
+    password: miroot@2021
+    database: 0
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 101.37.150.76
+                username: rabbit
+                password: miroot@2021
+                virtual-host: /
+      bindings:
+        output:
+          destination: Subscribe
+          content-type: application/json
+        input:
+          destination: Publisher
+          content-type: application/json
